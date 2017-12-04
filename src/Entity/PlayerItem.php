@@ -1,75 +1,103 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: emanuelevella
- * Date: 27/11/2017
- * Time: 14:39
+ * User: samuel.bigard
+ * Date: 27/11/17
+ * Time: 14:41
  */
 
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Item
- * @package App\Entity
  * @ORM\Entity
- * @Orm\Table(name="playeritems")
+ * @ORM\Table(name="tpBlanc_PlayerItem")
  */
-
 class PlayerItem
 {
+
     /**
-     * @var int
-     * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40)
-     */
-    protected $name;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="playeritems")
-     * @@ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Player")
+     * @ORM\JoinColumn("player_id", referencedColumnName="id")
      */
     private $player;
 
     /**
      * @ORM\ManyToOne(targetEntity="Item")
-     * @@ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     * @ORM\JoinColumn("item_id", referencedColumnName="id")
      */
     private $item;
 
     /**
-     * @return int
+     * @ORM\Column(type="integer")
      */
+    private $position;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="datetime", name="created_at")
      */
-    protected $position;
+    private $createdAt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=40)
+     * PlayerItem constructor.
      */
-    protected $created_at;
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
     public function setId($id)
     {
@@ -77,21 +105,34 @@ class PlayerItem
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getName()
+    public function getPlayer()
     {
-        return $this->name;
+        return $this->player;
     }
 
     /**
-     * @param string $name
+     * @param mixed $player
      */
-    public function setName($name)
+    public function setPlayer($player)
     {
-        $this->name = $name;
+        $this->player = $player;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
 
-
+    /**
+     * @param mixed $item
+     */
+    public function setItem($item)
+    {
+        $this->item = $item;
+    }
 }

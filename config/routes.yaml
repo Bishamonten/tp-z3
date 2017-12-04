@@ -1,25 +1,3 @@
-#index:
-#    path: /
-#    defaults: { _controller: 'App\Controller\DefaultController::index' }
-
-# first, run composer req annotations
-#controllers:
-#    resource: ../src/Controller/
-#    type: annotation
-
-
-personne_homepage:
-    path: /
-    defaults: { _controller: 'App\Controller\PersonController::homepage' }
-
-personne_index:
-    path: /player/index
-    defaults: { _controller: 'App\Controller\PersonController::index'}
-
-personne_show:
-    path: /player/show/{id}
-    defaults: { _controller: 'App\Controller\PersonController::show'}
-
-item_show:
-    path: /item/index
-    defaults: { _controller: 'App\Controller\ItemController::index'}
+controllers:
+    resource: ../src/Controller/
+    type: annotation

@@ -1,20 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: samuel.bigard
- * Date: 20/11/17
- * Time: 13:21
- */
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="tpBlanc_Item")
+ * @ORM\Table(name="tpBlanc_Player")
  */
-class Item
+
+class Player
 {
     /**
      * @ORM\Column(type="integer")
@@ -27,11 +23,6 @@ class Item
      * @ORM\Column(type="string", length=100)
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string", length=20, name="type_item")
-     */
-    private $typeItem;
 
     function __toString()
     {
@@ -69,22 +60,4 @@ class Item
     {
         $this->name = $name;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getTypeItem()
-    {
-        return $this->typeItem;
-    }
-
-    /**
-     * @param mixed $typeItem
-     */
-    public function setTypeItem($typeItem)
-    {
-        $this->typeItem = $typeItem;
-    }
-
-
 }

@@ -1,33 +1,46 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: emanuelevella
- * Date: 13/11/2017
- * Time: 14:19
+ * User: samuel.bigard
+ * Date: 20/11/17
+ * Time: 13:39
  */
 
 namespace App\Controller;
 
 
-use App\Entity\Person;
-use App\Form\PersonType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType, DateType, IntegerType, CheckboxType};
+use App\Entity\Item;
+use App\Form\ItemType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 
 class ItemController extends Controller
 {
-
-    public function index(Request $request)
-    {
+    /**
+     * @Route("/listItem", name="list_item")
+     */
+    public function listItem(){
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository(Person::class)->findAll();
+        $items = $em->getRepository(Item::class)->findAll();
 
-        return $this->render("Item/index.html.twig", array("items"=>$items));
+        return $this->render("Item/list.html.twig", array("items"=>$items));
+    }
 
+    /**
+     * @Route("/newItem",name="new_item")
+     */
+    public function newMaterial(Request $request){
+        $item = $this->get(\App\Entity\Item::class);
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(ItemType::class, $item);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($item);
+            $em->flush();
+        }
+
+        return $this->render("Item/new.html.twig", array("form"=>$form->createView()));
     }
 }
