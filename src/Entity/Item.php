@@ -9,6 +9,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity
@@ -25,11 +28,18 @@ class Item
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(
+     * min = 2,
+     * max = 20,
+     * minMessage = "Your name must be at least {{ limit }} characters long",
+     * maxMessage = "Your name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=20, name="type_item")
+     *
      */
     private $typeItem;
 

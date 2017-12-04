@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: samuel.bigard
- * Date: 27/11/17
- * Time: 16:33
- */
 
 namespace App\Calculate;
 
