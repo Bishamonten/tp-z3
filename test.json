@@ -1,0 +1,124 @@
+{
+  "test": "test",
+  "tabJour": [{
+    "date": "11-12-2018",
+    "NumeroJour" : "1",
+    "NumeroSemaine" : "50",
+    "creneaux": [{
+      "id": 1,
+      "idmatiere": 1,
+      "idgroupe": [1],
+      "idsalle": [1],
+      "idprof": [1],
+      "horaires": {
+        "heureDebut": "8h15",
+        "temps": 90
+      },
+      "exceptionnelMatiere" : null,
+      "exceptionnelGroupe" : null,
+      "description" : null
+    },
+      {
+        "id": 2,
+        "idmatiere": 2,
+        "idgroupe": [2],
+        "idsalle": [2],
+        "idprof": [2],
+        "horaires": {
+          "heureDebut": "8h15",
+          "temps": 90
+        },
+        "exceptionnelMatiere" : null,
+        "exceptionnelGroupe" : null,
+        "description" : null
+      }
+    ]
+  },
+    {
+      "date": "12-12-2018",
+      "NumeroJour" : "2",
+      "NumeroSemaine" : "50",
+      "creneaux": [{
+        "id": 1,
+        "idmatiere": 1,
+        "idgroupe": [1],
+        "idsalle": [1],
+        "idprof": [1],
+        "horaires": {
+          "heureDebut": "8h15",
+          "temps": 90
+        },
+        "exceptionnelMatiere" : null,
+        "exceptionnelGroupe" : null,
+        "description" : null
+      },
+        {
+          "id": 2,
+          "idmatiere": 2,
+          "idgroupe": [2],
+          "idsalle": [2],
+          "idprof": [2],
+          "horaires": {
+            "heureDebut": "8h15",
+            "temps": 90
+          },
+          "exceptionnelMatiere" : null,
+          "exceptionnelGroupe" : null,
+          "description" : null
+        }
+      ]
+    }
+  ],
+  "matiere" : [{
+    "id" : 1,
+    "nom" : "APA"
+  },
+    {
+      "id" : 2,
+      "nom" : "COO"
+    }
+  ],
+  "professeur" : [{
+    "id" : 1,
+    "nom" : "Leberre"
+  }, {
+    "id" : 2,
+    "nom" : "Condotta"
+  }
+  ],
+  "groupe": [{
+    "id": 1,
+    "nom": "INFO",
+    "parent" : null,
+    "fils" : [1],
+    "ordreAffichage" : 4,
+    "departementGroupe": [{
+      "id": 10,
+      "name": "INFO 1",
+      "parent" : 1,
+      "fils" : [100],
+      "ordreAffichage" : 3,
+      "groupes": [{
+        "id": 100,
+        "name": "groupe 1-A",
+        "parent" : 10,
+        "fils" : [1000, 1001],
+        "ordreAffichage" : 2,
+        "demiGroupes": [{
+          "id": 1000,
+          "name": "groupe 1-A-1",
+          "parent" : 100,
+          "fils" : null,
+          "ordreAffichage" : 1
+        },
+          {
+            "id": 1001,
+            "name": "groupe 1-A-1",
+            "parent" : 100,
+            "fils" : null,
+            "ordreAffichage" : 1
+          }]
+      }]
+    }]
+  }]
+}
